@@ -49,9 +49,9 @@ export default function SignUpForm() {
           name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Nama pengguna</FormLabel>
               <FormControl>
-                <Input placeholder="Username" {...field} />
+                <Input placeholder="Buat nama pengguna yang unik" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -64,7 +64,7 @@ export default function SignUpForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="Email" type="email" {...field} />
+                <Input placeholder="Masukkan email" type="email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -75,16 +75,19 @@ export default function SignUpForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Kata sandi</FormLabel>
               <FormControl>
-                <PasswordInput placeholder="Password" {...field} />
+                <PasswordInput
+                  placeholder="Masukkan kata sandi (min 8 karakter)"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
         <ButtonLoading loading={isPending} type="submit" className="w-full">
-          Create account
+          Buat akun
         </ButtonLoading>
       </form>
     </Form>

@@ -4,7 +4,7 @@ import SignUpForm from "./SignupForm";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Create new account",
+  title: "Buat akun baru",
   // CHANGE this description
   description: "Authentication forms built using the components",
 };
@@ -14,16 +14,16 @@ export default function SignUpPage() {
     <>
       <div className="flex flex-col space-y-2 text-center">
         <h1 className="text-2xl font-semibold tracking-tight">
-          Create new account
+          Buat akun baru
         </h1>
         <p className="text-sm text-muted-foreground">
-          Enter your data below to create account
+          Masukkan data dirimu untuk membuat akun
         </p>
       </div>
-      <Link href="/login" className="text-center font-semibold hover:underline">
-        Already have an account? <span className="text-primary">Sign in</span>
-      </Link>
       <SignUpForm />
+      <Link href="/login" className="text-center font-semibold hover:underline">
+        Sudah punya akun? <span className="text-primary">Masuk</span>
+      </Link>
     </>
   );
 }

@@ -46,9 +46,9 @@ export default function SignInForm() {
           name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Nama pengguna</FormLabel>
               <FormControl>
-                <Input placeholder="Username" {...field} />
+                <Input placeholder="Masukkan nama pengguna" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -59,16 +59,16 @@ export default function SignInForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Kata sandi</FormLabel>
               <FormControl>
-                <PasswordInput placeholder="Password" {...field} />
+                <PasswordInput placeholder="Masukkan kata sandi" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
         <ButtonLoading loading={isPending} type="submit" className="w-full">
-          Log in
+          Masuk
         </ButtonLoading>
       </form>
     </Form>

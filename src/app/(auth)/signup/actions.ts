@@ -33,7 +33,9 @@ export async function signUp(
     });
 
     if (existingUsername) {
-      return { error: "Username already taken!" };
+      return {
+        error: "Yah, nama pengguna sudah ada yang pakai, ganti yang lain ya!",
+      };
     }
 
     const existingEmail = await prisma.user.findFirst({
@@ -46,7 +48,7 @@ export async function signUp(
     });
 
     if (existingEmail) {
-      return { error: "Email already taken!" };
+      return { error: "Yah, email yang dimasukkan sudah dipakai" };
     }
 
     await prisma.user.create({
@@ -72,7 +74,7 @@ export async function signUp(
     if (isRedirectError(error)) throw error;
     console.error(error);
     return {
-      error: "Something went wrong. Please try again!",
+      error: "Terjadi kesalahan, coba lagi nanti ya!",
     };
   }
 }

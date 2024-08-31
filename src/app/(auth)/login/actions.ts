@@ -24,7 +24,8 @@ export async function login(
 
     if (!existingUser || !existingUser.passwordHash) {
       return {
-        error: "Incorrect username or password!",
+        error:
+          "Nama pengguna atau kata sandi yang di masukkan salah, coba lagi ya!",
       };
     }
 
@@ -37,7 +38,8 @@ export async function login(
 
     if (!validPassword) {
       return {
-        error: "Incorrect username or password!",
+        error:
+          "Nama pengguna atau kata sandi yang di masukkan salah, coba lagi ya!",
       };
     }
 
@@ -54,7 +56,7 @@ export async function login(
     if (isRedirectError(error)) throw error;
     console.error(error);
     return {
-      error: "Something went wrong. Please try again!",
+      error: "Terjadi kesalahan, coba lagi nanti ya!",
     };
   }
 }

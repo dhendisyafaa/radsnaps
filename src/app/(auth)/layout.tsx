@@ -27,20 +27,20 @@ export default async function LayoutAuth({
       <div className="container grid place-items-center overflow-y-auto">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
           {children}
-          <p className="text-center text-sm text-muted-foreground">
-            By clicking continue, you agree to our{" "}
+          <p className="text-center text-xs text-muted-foreground md:text-sm">
+            Dengan masuk atau mendaftar, kamu menyutujui{" "}
             <Link
               href="#"
               className="underline underline-offset-4 hover:text-primary"
             >
-              Terms of Service
+              Ketentuan layanan
             </Link>{" "}
-            and{" "}
+            dan{" "}
             <Link
               href="#"
               className="underline underline-offset-4 hover:text-primary"
             >
-              Privacy Policy
+              Kebijakan privasi
             </Link>
             .
           </p>
