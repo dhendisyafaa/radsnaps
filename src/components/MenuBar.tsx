@@ -1,5 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Bell, Bookmark, Home, Mail } from "lucide-react";
+import {
+  Bell,
+  Bookmark,
+  GalleryHorizontal,
+  Mail,
+  Search,
+  User,
+} from "lucide-react";
 import Link from "next/link";
 
 interface MenuBarProps {
@@ -16,30 +23,41 @@ export default function MenuBar({ className }: MenuBarProps) {
         asChild
       >
         <Link href="/">
-          <Home />
-          <span className="hidden lg:inline">Home</span>
+          <GalleryHorizontal />
+          <span className="hidden lg:inline">Galeri</span>
         </Link>
       </Button>
       <Button
         variant="ghost"
         className="flex items-center justify-start gap-3"
+        title="Home"
+        asChild
+      >
+        <Link href="/explore">
+          <Search />
+          <span className="hidden lg:inline">Explorasi</span>
+        </Link>
+      </Button>
+      <Button
+        variant="ghost"
+        className="hidden items-center justify-start gap-3 sm:flex"
         title="Notifications"
         asChild
       >
         <Link href="/notifications">
           <Bell />
-          <span className="hidden lg:inline">Notifications</span>
+          <span className="hidden lg:inline">Notifikasi</span>
         </Link>
       </Button>
       <Button
         variant="ghost"
-        className="flex items-center justify-start gap-3"
+        className="hidden items-center justify-start gap-3 sm:flex"
         title="Messages"
         asChild
       >
         <Link href="/messages">
           <Mail />
-          <span className="hidden lg:inline">Messages</span>
+          <span className="hidden lg:inline">Pesan</span>
         </Link>
       </Button>
       <Button
@@ -50,7 +68,18 @@ export default function MenuBar({ className }: MenuBarProps) {
       >
         <Link href="/bookmarks">
           <Bookmark />
-          <span className="hidden lg:inline">Bookmarks</span>
+          <span className="hidden lg:inline">Album</span>
+        </Link>
+      </Button>
+      <Button
+        variant="ghost"
+        className="flex items-center justify-start gap-3"
+        title="Bookmarks"
+        asChild
+      >
+        <Link href="/profile">
+          <User />
+          <span className="hidden lg:inline">Profil</span>
         </Link>
       </Button>
     </div>
