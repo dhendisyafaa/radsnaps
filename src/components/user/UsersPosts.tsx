@@ -1,13 +1,18 @@
 "use client";
+
 import kyInstance from "@/lib/ky";
 import { PostsPage } from "@/lib/types";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
-import InfiniteScrollContainer from "./InfiniteScrollContainer";
-import PostComponent from "./posts/PostComponent";
-import PostsLoadingSkeleton from "./loading/PostsLoadingSkeleton";
+import PostComponent from "../posts/PostComponent";
+import PostsLoadingSkeleton from "../loading/PostsLoadingSkeleton";
+import InfiniteScrollContainer from "../InfiniteScrollContainer";
 
-export default function ForYouFeed() {
+interface UserPostsProps {
+  userId: string;
+}
+
+export default function UserPosts({ userId }: UserPostsProps) {
   const {
     data,
     fetchNextPage,
@@ -15,18 +20,20 @@ export default function ForYouFeed() {
     isFetching,
     isFetchingNextPage,
     status,
+    error,
   } = useInfiniteQuery({
-    queryKey: ["post-feed", "for-you"],
+    queryKey: ["post-feed", "user-posts", userId],
     queryFn: ({ pageParam }) =>
       kyInstance
         .get(
-          "/api/posts/for-you",
+          `/api/users/${userId}/posts`,
           pageParam ? { searchParams: { cursor: pageParam } } : {},
         )
         .json<PostsPage>(),
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
+  console.log("🚀 ~ UserPosts ~ error:", error);
 
   const posts = data?.pages.flatMap((page) => page.posts) || [];
 
@@ -37,7 +44,7 @@ export default function ForYouFeed() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        No one has posted anything yet.
+        This user hasn&apos;t posted anything yet.
       </p>
     );
   }
