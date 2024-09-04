@@ -1,6 +1,8 @@
 import { validateRequest } from "@/auth";
+import ButtonEditProfile from "@/components/button/ButtonEditProfile";
 import ButtonLogout from "@/components/button/ButtonLogout";
 import FollowButton from "@/components/button/FollowButton";
+import Linkify from "@/components/Linkify";
 import { Button } from "@/components/ui/button";
 import FollowerCount from "@/components/user/FollowerCount";
 import UserPosts from "@/components/user/UsersPosts";
@@ -114,7 +116,7 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
         </div>
         <ButtonLogout />
         {user.id === loggedInUserId ? (
-          <Button>Edit profile</Button>
+          <ButtonEditProfile user={user} />
         ) : (
           <FollowButton userId={user.id} initialState={followerInfo} />
         )}
@@ -122,9 +124,11 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
       {user.bio && (
         <>
           <hr />
-          <div className="overflow-hidden whitespace-pre-line break-words">
-            {user.bio}
-          </div>
+          <Linkify>
+            <div className="overflow-hidden whitespace-pre-line break-words">
+              {user.bio}
+            </div>
+          </Linkify>
         </>
       )}
     </div>

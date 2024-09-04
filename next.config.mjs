@@ -4,11 +4,17 @@ const nextConfig = {
     staleTimes: {
       dynamic: 30,
     },
-    serverActions: {
-      allowedOrigins: ["tt9mb8xn-3000.asse.devtunnels.ms", "localhost:3000"],
-    },
   },
   serverExternalPackages: ["@node-rs/argon2"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "utfs.io",
+        pathname: `/a/${process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID}/*`,
+      },
+    ],
+  },
 };
 
 export default nextConfig;

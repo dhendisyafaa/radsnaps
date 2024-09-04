@@ -33,7 +33,6 @@ export default function UserPosts({ userId }: UserPostsProps) {
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
-  console.log("🚀 ~ UserPosts ~ error:", error);
 
   const posts = data?.pages.flatMap((page) => page.posts) || [];
 
